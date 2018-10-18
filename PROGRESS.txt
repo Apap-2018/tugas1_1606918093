@@ -1,0 +1,27 @@
+#
+FITUR 1
+Fungsi done
+
+FITUR 2
+FITUR 3
+FITUR 4
+FITUR 5
+
+FITUR 6
+Fungsi done, tinggal fix di home itu masih input by id 
+bukan menu dropdown sesuai detail jabatan
+
+FITUR 7
+FITUR 8
+
+FITUR 9
+Fungsi done, tapi tampilan html belum entries.
+
+FITUR 10
+FITUR 11
+FITUR 12 
+
+FINALTOUCH 
+>>UI/UX = belum.
+>>Satuin navbar = belum
+ 
