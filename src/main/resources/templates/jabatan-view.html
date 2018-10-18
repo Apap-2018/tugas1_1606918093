@@ -21,6 +21,10 @@
 			<br><br>
 		</tr>
 	</tbody>
+	<form th:action="@{/jabatan/ubah}" class="form-inline" method="GET">
+		<input type="hidden" th:value="${datajabatan.id}" name="idJabatan"></input>
+		<button class="btn btn-alert mb-2" type="submit">Ubah</button>
+	</form>
 </body>
 
 </html>
