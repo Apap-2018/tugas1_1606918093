@@ -17,6 +17,7 @@ FITUR 7
 Fungsi done, tapi tampilan html belum rapi. 
 
 FITUR 8
+Fungsi done
 
 FITUR 9
 Fungsi done, tapi tampilan html belum entries.

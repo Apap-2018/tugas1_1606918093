@@ -63,6 +63,13 @@ public class JabatanController {
 		return "infosuccess";
 	}
 	
+	@RequestMapping(value = "jabatan/hapus", method = RequestMethod.POST)
+	private String deleteJabatan(@RequestParam(value="idJabatan") BigInteger id, Model model) {
+		jabatanService.deleteJabatan(id);
+		model.addAttribute("title", "Delete Jabatan");
+		return "infosuccess";
+	}
+	
 	
 
 }

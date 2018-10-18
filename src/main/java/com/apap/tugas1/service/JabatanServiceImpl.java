@@ -42,6 +42,12 @@ public class JabatanServiceImpl implements JabatanService {
 		jabatanDb.save(newJabatan);
 	}
 
+	@Override
+	public void deleteJabatan(BigInteger id) {
+		// TODO Auto-generated method stub
+		jabatanDb.deleteById(id);
+	}
+
 	
 
 }

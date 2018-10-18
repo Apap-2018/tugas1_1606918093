@@ -25,6 +25,10 @@
 		<input type="hidden" th:value="${datajabatan.id}" name="idJabatan"></input>
 		<button class="btn btn-alert mb-2" type="submit">Ubah</button>
 	</form>
+	<form th:if="${datajabatan.listPegawai.isEmpty()} == true"  th:action="@{/jabatan/hapus}" class="form-inline" method="POST">
+		<input type="hidden" th:value="${datajabatan.id}" name="idJabatan"></input>
+		<button class="btn btn-danger mb-2" type="submit">Hapus</button>
+	</form>
 </body>
 
 </html>
