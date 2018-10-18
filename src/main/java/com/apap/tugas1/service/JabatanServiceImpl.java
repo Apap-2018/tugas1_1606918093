@@ -1,7 +1,6 @@
 package com.apap.tugas1.service;
 
 import java.math.BigInteger;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +31,17 @@ public class JabatanServiceImpl implements JabatanService {
 		// TODO Auto-generated method stub
 		jabatanDb.save(jabatan);
 	}
+
+	@Override
+	public void updateJabatan(JabatanModel newJabatan) {
+		// TODO Auto-generated method stub
+		JabatanModel updateJabatan = jabatanDb.getOne(newJabatan.getId());
+		updateJabatan.setNama(newJabatan.getNama());
+		updateJabatan.setDeskripsi(newJabatan.getDeskripsi());
+		updateJabatan.setGaji_pokok(newJabatan.getGaji_pokok());
+		jabatanDb.save(newJabatan);
+	}
+
+	
 
 }

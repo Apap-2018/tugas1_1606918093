@@ -48,6 +48,21 @@ public class JabatanController {
 		return "infosuccess";
 	}
 	
+	@RequestMapping(value="jabatan/ubah", method = RequestMethod.GET)
+	private String update(@RequestParam(value="idJabatan") BigInteger id, Model model) {
+		JabatanModel jabatan = jabatanService.getJabatanById(id);
+		model.addAttribute("jabatan", jabatan);
+		return "jabatan-update";
+	}
+	
+	@RequestMapping(value = "jabatan/ubah", method = RequestMethod.POST)
+	private String updateJabatan(@RequestParam(value="idJabatan") BigInteger id, JabatanModel jabatan, Model model) {
+		jabatan.setId(id);
+		jabatanService.updateJabatan(jabatan);
+		model.addAttribute("updatedJabatan", jabatan);
+		return "infosuccess";
+	}
+	
 	
 
 }

@@ -8,4 +8,5 @@ public interface JabatanService {
 	JabatanDb getJabatanDb();
 	JabatanModel getJabatanById(BigInteger id);
 	void addJabatan(JabatanModel jabatan);
+	void updateJabatan(JabatanModel newJabatan);
 }

@@ -14,6 +14,8 @@ Fungsi done, tinggal fix di home itu masih input by id
 bukan menu dropdown sesuai detail jabatan
 
 FITUR 7
+Fungsi done, tapi tampilan html belum rapi. 
+
 FITUR 8
 
 FITUR 9
