@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+	<title>SIPEG</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>	
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<table>
+	<h3 th:text="' Lihat Data Pegawai ' + ${datapegawai.nip}" />
+	<h5 th:text="'NIP ' + ${datapegawai.nip}" />
+	<h5 th:text="'Nama ' + ${datapegawai.nama}" />
+	<h5 th:text="'Tempat Lahir ' + ${datapegawai.tempat_lahir}" />
+	<h5 th:text="'Tanggal Lahir' + ${datapegawai.tanggal_lahir}" />
+	<h5 th:text="'Tahun Masuk ' + ${datapegawai.tahun_masuk}" />
+	<h5 th:text="'Nama Instansi ' + ${datapegawai.instansi.nama} + ' - ' " />
+	<h5 th:text="'Jabatan '"/>
+	<h5 th:each="jabatan : ${jabatanPegawai}" + >
+	<h5 th:text="${jabatan.nama}"></h5>
+	<h5 th:text="'Gaji ' + ${gajiPegawai}"/>
+	</table>
+	<br>
+	<form th:action="@{/pegawai/update/} + ${datapegawai.nip}">
+		<button type="Ubah">Update Data</button>
+	</form>
+	
+</body>
+
+
+</html>
