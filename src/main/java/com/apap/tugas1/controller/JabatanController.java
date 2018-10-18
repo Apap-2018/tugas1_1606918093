@@ -33,7 +33,19 @@ public class JabatanController {
 		JabatanModel datajabatan = jabatanService.getJabatanById(id);
 		model.addAttribute("datajabatan", datajabatan);
 		return "jabatan-view";
-		
+	}
+	
+	@RequestMapping(value = "/jabatan/tambah", method = RequestMethod.GET)
+	private String add(Model model) {
+		model.addAttribute("jabatan", new JabatanModel());
+		model.addAttribute("title", "Add Pilot");
+		return "jabatan-add";
+	}
+	
+	@RequestMapping(value = "jabatan/tambah", method = RequestMethod.POST)
+	private String addJabatan(JabatanModel jabatan,Model model) {
+		jabatanService.addJabatan(jabatan);
+		return "infosuccess";
 	}
 	
 	

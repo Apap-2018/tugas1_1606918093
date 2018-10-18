@@ -7,4 +7,5 @@ import com.apap.tugas1.repository.JabatanDb;
 public interface JabatanService {
 	JabatanDb getJabatanDb();
 	JabatanModel getJabatanById(BigInteger id);
+	void addJabatan(JabatanModel jabatan);
 }

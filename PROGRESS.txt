@@ -5,7 +5,9 @@ Fungsi done
 FITUR 2
 FITUR 3
 FITUR 4
+
 FITUR 5
+Fungsi done, tapi belum disetting supaya balik ke page awal
 
 FITUR 6
 Fungsi done, tinggal fix di home itu masih input by id 

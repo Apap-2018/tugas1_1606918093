@@ -27,4 +27,10 @@ public class JabatanServiceImpl implements JabatanService {
 		return jabatanDb.getOne(id);
 	}
 
+	@Override
+	public void addJabatan(JabatanModel jabatan) {
+		// TODO Auto-generated method stub
+		jabatanDb.save(jabatan);
+	}
+
 }
