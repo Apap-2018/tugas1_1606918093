@@ -21,52 +21,58 @@ public class JabatanController {
 	@Autowired
 	private JabatanService jabatanService;
 	
-	@RequestMapping(value = "jabatan/viewall", method = RequestMethod.GET)
+	@RequestMapping(value = "/jabatan/viewall", method = RequestMethod.GET)
 	private String jabatanViewAll(Model model){
 		List<JabatanModel> datajabatan = jabatanService.getJabatanDb().findAll();
 		model.addAttribute("datajabatan", datajabatan);
+		model.addAttribute("title", "Lihat Daftar Jabatan");
 		return "jabatan-viewall";
 	}
 	
-	@RequestMapping(value = "jabatan/view", method = RequestMethod.GET)
+	@RequestMapping(value = "/jabatan/view", method = RequestMethod.GET)
 	private String viewDataByJabatan(@RequestParam(value="idJabatan") BigInteger id, Model model) {
 		JabatanModel datajabatan = jabatanService.getJabatanById(id);
 		model.addAttribute("datajabatan", datajabatan);
+		model.addAttribute("title", "Lihat Data terkait Jabatan");
 		return "jabatan-view";
 	}
 	
 	@RequestMapping(value = "/jabatan/tambah", method = RequestMethod.GET)
 	private String add(Model model) {
 		model.addAttribute("jabatan", new JabatanModel());
-		model.addAttribute("title", "Add Pilot");
+		model.addAttribute("title", "Tambah Jabatan/Posisi");
 		return "jabatan-add";
 	}
 	
-	@RequestMapping(value = "jabatan/tambah", method = RequestMethod.POST)
+	@RequestMapping(value = "/jabatan/tambah", method = RequestMethod.POST)
 	private String addJabatan(JabatanModel jabatan,Model model) {
 		jabatanService.addJabatan(jabatan);
+		model.addAttribute("title", "Jabatan");
 		return "infosuccess";
 	}
 	
-	@RequestMapping(value="jabatan/ubah", method = RequestMethod.GET)
+	@RequestMapping(value="/jabatan/ubah", method = RequestMethod.GET)
 	private String update(@RequestParam(value="idJabatan") BigInteger id, Model model) {
 		JabatanModel jabatan = jabatanService.getJabatanById(id);
 		model.addAttribute("jabatan", jabatan);
+		model.addAttribute("title", "Update Jabatan");
 		return "jabatan-update";
 	}
 	
-	@RequestMapping(value = "jabatan/ubah", method = RequestMethod.POST)
+	@RequestMapping(value = "/jabatan/ubah", method = RequestMethod.POST)
 	private String updateJabatan(@RequestParam(value="idJabatan") BigInteger id, JabatanModel jabatan, Model model) {
 		jabatan.setId(id);
 		jabatanService.updateJabatan(jabatan);
 		model.addAttribute("updatedJabatan", jabatan);
+		model.addAttribute("title", "Update Jabatan");
 		return "infosuccess";
 	}
 	
-	@RequestMapping(value = "jabatan/hapus", method = RequestMethod.POST)
+	@RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
 	private String deleteJabatan(@RequestParam(value="idJabatan") BigInteger id, Model model) {
 		jabatanService.deleteJabatan(id);
 		model.addAttribute("title", "Delete Jabatan");
+		model.addAttribute("title", "Hapus Jabatan");
 		return "infosuccess";
 	}
 	

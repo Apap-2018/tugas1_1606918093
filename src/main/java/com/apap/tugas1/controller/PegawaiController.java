@@ -26,7 +26,8 @@ public class PegawaiController {
 	private ProvinsiService provinsiService;
 	
 	@RequestMapping("/")
-	private String home() {
+	private String home(Model model) {
+		model.addAttribute("title", "SIPEG");
 		return "home";
 	}
 	
@@ -51,6 +52,7 @@ public class PegawaiController {
 		PegawaiModel muda = pegawaiService.getPegawaiTermudaDiInstansi(id);
 		model.addAttribute("tertua", tua);
 		model.addAttribute("termuda", muda);
+		model.addAttribute("title", "Old-Young");
 		return "pegawai-tuamuda";
 	}
 	

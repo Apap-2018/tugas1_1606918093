@@ -26,9 +26,9 @@ FITUR 10
 Fungsi done, tapi tampilan html belum column. 
 
 FITUR 11
-
+> add Navbar done 
 
 FINALTOUCH 
 >>UI/UX = belum.
->>Satuin navbar = belum
+>>Satuin navbar = DONE
  
