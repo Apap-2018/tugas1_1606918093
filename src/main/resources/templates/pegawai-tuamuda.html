@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>SIPEG</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>	
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<tbody>
+		<h3> Tertua </h3>
+		<tr th:each="tua,iterationStatus : ${tertua}">
+			<td th:text="${tua.nip}"></td>
+			<br>
+			<td th:text="${tua.nama}"></td>
+			<br>
+			<td th:text="${tua.tempat_lahir}"></td>
+			<br>
+			<td th:text="${tua.tanggal_lahir}"></td>
+			<br>
+			<td th:text="${tua.tahun_masuk}"></td>
+			<br>
+			<td th:text="${tua.instansi.nama}"></td>
+			<br>
+			<br>
+		</tr>
+	</tbody>
+	<tbody>
+		<h3> Termuda </h3>
+		<tr th:each="muda,iterationStatus : ${termuda}">
+			<td th:text="${muda.nip}"></td>
+			<br>
+			<td th:text="${muda.nama}"></td>
+			<br>
+			<td th:text="${muda.tempat_lahir}"></td>
+			<br>
+			<td th:text="${muda.tanggal_lahir}"></td>
+			<br>
+			<td th:text="${muda.tahun_masuk}"></td>
+			<br>
+			<td th:text="${muda.instansi.nama}"></td>
+			<br>	
+			<br>
+		</tr>
+	</tbody>
+	
+	
+
+
+</body>
+</html>

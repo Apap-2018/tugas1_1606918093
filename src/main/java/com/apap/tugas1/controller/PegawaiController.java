@@ -1,5 +1,6 @@
 package com.apap.tugas1.controller;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,14 @@ public class PegawaiController {
 		
 	}
 	
+	@RequestMapping(value="/pegawai/termuda-tertua", method = RequestMethod.GET)
+	private String viewTertuaTermuda(@RequestParam (value="idInstansi") BigInteger id, Model model) {
+		PegawaiModel tua = pegawaiService.getPegawaiTertuaDiInstansi(id);
+		PegawaiModel muda = pegawaiService.getPegawaiTermudaDiInstansi(id);
+		model.addAttribute("tertua", tua);
+		model.addAttribute("termuda", muda);
+		return "pegawai-tuamuda";
+	}
 	
 	
 	

@@ -23,8 +23,10 @@ FITUR 9
 Fungsi done, tapi tampilan html belum entries.
 
 FITUR 10
+Fungsi done, tapi tampilan html belum column. 
+
 FITUR 11
-FITUR 12 
+
 
 FINALTOUCH 
 >>UI/UX = belum.
