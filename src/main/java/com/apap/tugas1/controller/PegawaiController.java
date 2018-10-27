@@ -2,10 +2,12 @@ package com.apap.tugas1.controller;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import com.apap.tugas1.service.ProvinsiService;
 
 @Controller
 public class PegawaiController {
+	private BigInteger transformId;
 
 	@Autowired
 	private PegawaiService pegawaiService;
@@ -56,6 +59,23 @@ public class PegawaiController {
 		return "pegawai-tuamuda";
 	}
 	
+	@RequestMapping(value = "pegawai/ubah", method = RequestMethod.GET)
+	private String updatePegawai(@RequestParam("nip") String nip, Model model) {
+		PegawaiModel pegawai = pegawaiService.getPegawaiModelByNip(nip);
+		transformId = pegawai.getId();
+		model.addAttribute("datapegawai", pegawai);
+		model.addAttribute("pegawaiByProvinsi", pegawai.getInstansi().getProvinsi().getNama());
+		model.addAttribute("listjabatan", pegawai.getJabatan());
+		model.addAttribute("datainstansi", pegawai.getInstansi().getNama());
+		return "pegawai-update";
+	}
 	
+	@RequestMapping(value = "pegawai/ubah", method = RequestMethod.POST)
+	private String updatePegawaiSubmit(@RequestParam(value="id") BigInteger id, Model model, @ModelAttribute Optional<PegawaiModel> pegawai) {
+		pegawaiService.updatePegawai(id, pegawai.get());
+		model.addAttribute("id", id);
+		
+		return "pegawai-update";
+	}
 	
 }

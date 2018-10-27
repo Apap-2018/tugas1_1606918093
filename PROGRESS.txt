@@ -3,7 +3,10 @@ FITUR 1
 Fungsi done
 
 FITUR 2
+
 FITUR 3
+Fungsi half done
+
 FITUR 4
 
 FITUR 5

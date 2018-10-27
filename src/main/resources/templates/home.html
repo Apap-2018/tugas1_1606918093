@@ -52,7 +52,7 @@
 				</div>
 				<form th:action="@{/jabatan/view}" method="GET">
 				<div class="card-body">
-					<label for="idJabatan">Pilih Jabatan </label>
+					<label for="idJabatan">Masukkan ID Jabatan </label>
 					<input type="text" name="idJabatan" class="form-control" />
 					<p></p>
 					<button type="submit" class="btn btn-primary">Lihat</button>
@@ -62,8 +62,6 @@
 		</div>
 	</div>
 	<br>
-	
-	
 </body>
 <object th:include="fragments/footer :: footer" th:remove="tag"></object>
 </html>

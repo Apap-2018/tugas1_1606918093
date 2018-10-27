@@ -35,12 +35,12 @@ public class ProvinsiModel implements Serializable {
 		this.instansiProvinsi = instansiProvinsi;
 	}
 
-	public String getName() {
-		return name;
+	public String getNama() {
+		return nama;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNama(String nama) {
+		this.nama = nama;
 	}
 
 	public double getPresentase_tunjangan() {
@@ -65,7 +65,7 @@ public class ProvinsiModel implements Serializable {
 	@NotNull
 	@Size(max=255)
 	@Column(name="nama", nullable = false)
-	private String name;
+	private String nama;
 	
 	//presentase_tunjangan
 	@NotNull

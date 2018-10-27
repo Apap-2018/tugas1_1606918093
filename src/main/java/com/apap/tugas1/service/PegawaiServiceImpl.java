@@ -2,6 +2,7 @@ package com.apap.tugas1.service;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -51,6 +52,27 @@ public class PegawaiServiceImpl implements PegawaiService {
 		}
 		return muda;
 	}
+
+	
+
+	@Override
+	public void updatePegawai(BigInteger id, PegawaiModel pegawai) {
+		// TODO Auto-generated method stub
+		PegawaiModel updatePegawai = pegawaiDb.getOne(id);
+		updatePegawai.setNama(pegawai.getNama());
+		updatePegawai.setInstansi(pegawai.getInstansi());
+		updatePegawai.setTahun_masuk(pegawai.getTahun_masuk());
+		updatePegawai.setTempat_lahir(pegawai.getTempat_lahir());
+		updatePegawai.setTanggal_lahir(pegawai.getTanggal_lahir());
+		pegawaiDb.save(updatePegawai);
+		
+	}
+
+	
+
+
+
+	
 
 	
 	

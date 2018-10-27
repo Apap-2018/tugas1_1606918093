@@ -7,6 +7,7 @@
 	<object th:include="fragments/fragment :: js" th:remove="tag"></object>	
 </head>
 <body>
+	<div class="fill" style="background-image:url(http://oi64.tinypic.com/33kdvo2.jpg);"></div>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	<form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method="POST">
 		Nama : <br>
