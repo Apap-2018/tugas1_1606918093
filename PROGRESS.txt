@@ -19,7 +19,7 @@ bukan menu dropdown sesuai detail jabatan
 FITUR 7
 Fungsi done, tapi tampilan html belum rapi. 
 
-FITUR 8
+FITUR 8scele
 Fungsi done
 
 FITUR 9
