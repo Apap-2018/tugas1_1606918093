@@ -1,6 +1,7 @@
 package com.apap.tugas1.service;
 
-import java.math.BigInteger;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class JabatanServiceImpl implements JabatanService {
 	}
 
 	@Override
-	public JabatanModel getJabatanById(BigInteger id) {
+	public JabatanModel getJabatanById(long id) {
 		// TODO Auto-generated method stub
 		return jabatanDb.getOne(id);
 	}
@@ -43,9 +44,21 @@ public class JabatanServiceImpl implements JabatanService {
 	}
 
 	@Override
-	public void deleteJabatan(BigInteger id) {
+	public void deleteJabatan(long id) {
 		// TODO Auto-generated method stub
 		jabatanDb.deleteById(id);
+	}
+
+	@Override
+	public List<JabatanModel> getListJabatan() {
+		// TODO Auto-generated method stub
+		return jabatanDb.findAll();
+	}
+
+	@Override
+	public List<JabatanModel> findAllJabatan() {
+		// TODO Auto-generated method stub
+		return jabatanDb.findAll();
 	}
 
 	

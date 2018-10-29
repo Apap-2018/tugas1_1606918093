@@ -1,6 +1,5 @@
 package com.apap.tugas1.controller;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class JabatanController {
 	}
 	
 	@RequestMapping(value = "/jabatan/view", method = RequestMethod.GET)
-	private String viewDataByJabatan(@RequestParam(value="idJabatan") BigInteger id, Model model) {
+	private String viewDataByJabatan(@RequestParam(value="idJabatan")long id, Model model) {
 		JabatanModel datajabatan = jabatanService.getJabatanById(id);
 		model.addAttribute("datajabatan", datajabatan);
 		model.addAttribute("title", "Lihat Data terkait Jabatan");
@@ -52,7 +51,7 @@ public class JabatanController {
 	}
 	
 	@RequestMapping(value="/jabatan/ubah", method = RequestMethod.GET)
-	private String update(@RequestParam(value="idJabatan") BigInteger id, Model model) {
+	private String update(@RequestParam(value="idJabatan") long id, Model model) {
 		JabatanModel jabatan = jabatanService.getJabatanById(id);
 		model.addAttribute("jabatan", jabatan);
 		model.addAttribute("title", "Update Jabatan");
@@ -60,16 +59,16 @@ public class JabatanController {
 	}
 	
 	@RequestMapping(value = "/jabatan/ubah", method = RequestMethod.POST)
-	private String updateJabatan(@RequestParam(value="idJabatan") BigInteger id, JabatanModel jabatan, Model model) {
+	private String updateJabatan(@RequestParam(value="idJabatan") long id, JabatanModel jabatan, Model model) {
 		jabatan.setId(id);
 		jabatanService.updateJabatan(jabatan);
 		model.addAttribute("updatedJabatan", jabatan);
 		model.addAttribute("title", "Update Jabatan");
-		return "infosuccess";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
-	private String deleteJabatan(@RequestParam(value="idJabatan") BigInteger id, Model model) {
+	private String deleteJabatan(@RequestParam(value="idJabatan") long id, Model model) {
 		jabatanService.deleteJabatan(id);
 		model.addAttribute("title", "Delete Jabatan");
 		model.addAttribute("title", "Hapus Jabatan");

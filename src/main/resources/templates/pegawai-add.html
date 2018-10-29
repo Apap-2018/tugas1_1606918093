@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<object th:include="fragments/fragment :: title" ></object>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	
+	<div class="container-fluid">
+		<h2>Tambah Pegawai</h2>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<form th:action="@{/pegawai/tambah}" th:object="${pegawai}" method="POST">
+						<div class="card-body">
+							<table style="width:100%" cellpadding="10">
+							<tr>
+							  <tr>
+							    <th>Nama</th>
+							    <td><input class="form-control"  type="text" name="nama"/></td>
+							  </tr>
+							  <tr>
+							    <th>Tempat Lahir</th>
+							    <td><input class="form-control"  type="text" name="tempat_lahir"/></td>
+							  </tr>
+							  <tr>
+							    <th>Tanggal Lahir</th>
+							    <td><input class="form-control"  type="date" name="tanggal_lahir"/></td>
+							  </tr>
+							  <tr>
+							    <th>Tahun Masuk</th>
+							    <td><input class="form-control"  type="number" min="1900" max="2099" step="1" name="tahun_masuk"/></td>
+							  </tr>
+							  <tr>
+							    <th>Provinsi</th>
+							    <td><select class="form-control" name="provinsi">
+									  <option  th:each="provinsi,iterationStatus : ${pegawaiByProvinsi}"
+									  			th:value="${provinsi.nama}" th:text="${provinsi.nama}">provinsi</option>
+									 </select>
+							    </td>
+							  </tr>
+							  <tr>
+							    <th>Nama Instansi</th>
+							    <td><select class="form-control" name="instansi">
+									  <option  th:each="instansi,iterationStatus : ${datainstansi}"
+									  			th:value="${instansi.id}" th:text="${instansi.nama}">instansi</option>
+									 </select>
+								</td>
+							  </tr>
+							  <tr>
+							    <th>Jabatan</th>
+							  	<td>
+							  		<select class="form-control" name="jabatan">
+									  <option  th:each="jabatan,iterationStatus : ${listjabatan}"
+									  			th:value="${jabatan.id}" th:text="${jabatan.nama}">jabatan</option>
+									  			
+									 </select>
+							  		<a href="/jabatan/tambah">Tambah Jabatan Lainnya</a>
+							  		
+							  	</td>
+							  </tr>
+							</tr>
+							</table>
+							<br>
+							<button type="submit" class="btn btn-primary">Simpan</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

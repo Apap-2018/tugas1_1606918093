@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>SIPEG</title>
+	<object th:include="fragments/fragment :: title" ></object>
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-	<object th:include="fragments/fragment :: js" th:remove="tag"></object>	
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
-<body>
-	<h3>Update Jabatan Information</h3>
-	<form th:action="@{/jabatan/ubah/}" th:object="${jabatan}" method ="POST">
-		<input type="hidden" th:value="${jabatan.id}" name="idJabatan"></input>
-		Name: <br>
-		<input type="text" name="nama" th:value="${jabatan.nama}" readonly/>
-		<br>
-		Deskripsi : <br>
-		<input type="text" name="deskripsi" th:value="${jabatan.deskripsi}"/>
-		<br>
-		Gaji Pokok : <br>
-		<input type="number" name="gaji_pokok" th:value="${jabatan.gaji_pokok}"/>
-		<br><br>
-		<button type="submit">Submit</button>
-	</form>
-	
-</body>
 
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	
+	<div class="container-fluid">
+		<h2>Ubah</h2>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<form th:action="@{/jabatan/ubah(jabatanId=${jabatan.id})}" th:object="${jabatan}" method="POST">
+						<input type="hidden" th:value="${jabatan.id}" name="idJabatan"></input>
+						<div class="card-body">
+							<table style="width:100%" cellpadding="10">
+							<tr>
+							  <tr>
+							    <th>Nama</th>
+							    <td><input class="form-control"  type="text" th:value="${jabatan.nama}" name="nama"/></td>
+							  </tr>
+							  <tr>
+							    <th>Deskripsi</th>
+							    <td><input class="form-control"  type="text" th:value="${jabatan.deskripsi}" name="deskripsi"/></td>
+							  </tr>
+							  <tr>
+							    <th>Gaji Pokok</th>
+							    <td><input class="form-control"  type="text" th:value="${jabatan.gaji_pokok}" name="gaji_pokok"/></td>
+							  </tr>
+
+							</tr>
+							</table>
+							<br>
+							<button type="submit" class="btn btn-primary">Simpan</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 </html>

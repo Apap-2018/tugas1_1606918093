@@ -9,8 +9,8 @@ import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.model.PegawaiModel;
 
 
-public interface JabatanDb extends JpaRepository<JabatanModel, BigInteger>{
-	Optional<JabatanModel> findById(BigInteger id);
-	void deleteById(BigInteger id);
+public interface JabatanDb extends JpaRepository<JabatanModel, Long>{
+	Optional<JabatanModel> findById(long id);
+	void deleteById(long id);
 
 }

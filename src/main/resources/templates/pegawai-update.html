@@ -2,72 +2,77 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>SIPEG</title>
+	<object th:include="fragments/fragment :: title" ></object>
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-	<object th:include="fragments/fragment :: js" th:remove="tag"></object>	
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
+
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
-	<h3> Ubah Pegawai </h3>
+	
 	<div class="container-fluid">
-			<div class="row">
-				<div class="col" style="margin-left: 25%; margin-right:25%;">
-					<h3 id="page-title" align="center">Ubah Pegawai</h3>
-					<form th:action="@{/pegawai/ubah}" th:object="${pegawai}" method="POST">
-						<input type="hidden" th:value="${datapegawai.nip}"></input>
-						<div class="form-group row">
-							<label for="nama" class="col-sm-3 col-form-label-md">Nama</label>
-							<div class="col-sm-9">
-								<input required th:value="${datapegawai.nama}" type="text" name="nama" class="form-control" />
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="tempat_lahir" class="col-sm-3 col-form-label-md">Tempat Lahir</label>
-							<div class="col-sm-9">
-								<input required th:value="${datapegawai.tempat_lahir}" type="text" name="tempat_lahir" class="form-control"/>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="tanggal_lahir" class="col-sm-3 col-form-label-md">Tanggal Lahir</label>
-							<div class="col-sm-9">
-								<input required th:value="${datapegawai.tanggal_lahir}" type="date" name="tanggal_lahir" class="form-control" />
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="tahunMasuk" class="col-sm-3 col-form-label-md">Tahun Masuk</label>
-							<div class="col-sm-9">
-								<input required th:value="${datapegawai.tahun_masuk}" type="number" name="tahun_masuk" class="form-control" />
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="provinsi" class="col-sm-3 col-form-label-md">Provinsi</label>
-							<div class="col-sm-9">
-								<select required name="provinsi" id="provinsi" class="form-control">
-									<option
-					                    th:each="provinsi,iterationStatus: ${allProvinsi}"
-					                    th:text="${provinsi.nama}" th:value="${provinsi.id}"
-					                    th:selected="${provinsi.id == pegawai.instansi.provinsi.id}"></option>
+		<h2>Ubah Pegawai</h2>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<form th:action="@{/pegawai/ubah}" th:object="${datapegawai}" method="POST">
+						<div class="card-body">
+							<table style="width:100%" cellpadding="10">
+							<tr>
+							  <tr>
+							    <th>Nama</th>
+							    <td><input class="form-control"  type="text" th:value="${datapegawai.nama}" name="nama"/></td>
+							  </tr>
+							  <tr>
+							    <th>Tempat Lahir</th>
+							    <td><input class="form-control"  type="text" th:value="${datapegawai.tempat_lahir}" name="tempat_lahir"/></td>
+							  </tr>
+							  <tr>
+							    <th>Tanggal Lahir</th>
+							    <td><input class="form-control"  type="text" th:value="${datapegawai.tanggal_lahir}" name="tanggal_lahir"/></td>
+							  </tr>
+							  <tr>
+							    <th>Tahun Masuk</th>
+							    <td><input class="form-control"  type="text" th:value="${datapegawai.tahun_masuk}" name="tahun_masuk"/></td>
+							  </tr>							  
+							  <tr>
+							    <th>Provinsi</th>
+							    <td>
+							  	<select class="form-control" name="provinsi">
+									  <option  	th:each="provinsi,iterationStatus : ${pegawaiByProvinsi}"
+									  			th:value="${provinsi.nama}" th:text="${provinsi.nama}">provinsi</option>
 								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="instansi" class="col-sm-3 col-form-label-md">Nama Instansi</label>
-							<div class="col-sm-9">
-		
-								<select required name="instansi" id="instansi" class="form-control">
-									<option  th:each="instansi, iterationStatus:${allInstansi}"
-										th:text="${instansi.nama} + ' - ' + ${instansi.provinsi.nama}" th:value="${instansi.id}"
-										th:selected="${instansi.id == pegawai.instansi.id}">Pilih Instansi</option>
+								</td>
+							  </tr>
+							  <tr>
+							    <th>Nama Instansi</th>
+							    <td>
+							    <select class="form-control" name="instansi">
+									  <option  	th:each="instansi,iterationStatus : ${datainstansi}"
+									  			th:value="${instansi.nama}" th:text="${instansi.nama}">instansi</option>
 								</select>
-								
-							</div>
+								</td>
+							  </tr>							  
+							  <tr>
+							    <th>Jabatan</th>
+							  	<td>
+							  		<select class="form-control" name="jabatan">
+									  <option  	th:each="jabatan,iterationStatus : ${listjabatan}"
+									  			th:value="${jabatan.nama}" th:text="${jabatan.nama}">jabatan</option>
+									 </select>
+							  		<a href="">Tambah Jabatan Lainnya</a>
+							  	</td>
+							  </tr>
+							</tr>
+							</table>
+							<br>
+							<button name="submit" type="submit" class="btn btn-primary">Simpan</button>
 						</div>
-						<button name="submit" type="submit" class="btn btn-primary mb-2">Simpan</button>
 					</form>
 				</div>
 			</div>
 		</div>
-
-
+	</div>
 </body>
 </html>

@@ -3,35 +3,33 @@ FITUR 1
 Fungsi done
 
 FITUR 2
+Fungsi done
 
 FITUR 3
 Fungsi half done
 
 FITUR 4
+Fungsi half done
 
 FITUR 5
-Fungsi done, tapi belum disetting supaya balik ke page awal
+Fungsi done
 
 FITUR 6
-Fungsi done, tinggal fix di home itu masih input by id 
-bukan menu dropdown sesuai detail jabatan
+Fungsi done
 
 FITUR 7
-Fungsi done, tapi tampilan html belum rapi. 
+Fungsi done 
 
-FITUR 8scele
+FITUR 8
 Fungsi done
 
 FITUR 9
-Fungsi done, tapi tampilan html belum entries.
+Fungsi done
 
 FITUR 10
-Fungsi done, tapi tampilan html belum column. 
+Fungsi done
 
 FITUR 11
-> add Navbar done 
+> add Navbar done, tidy html done. 
 
-FINALTOUCH 
->>UI/UX = belum.
->>Satuin navbar = DONE
  

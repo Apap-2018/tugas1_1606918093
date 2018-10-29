@@ -1,7 +1,6 @@
 package com.apap.tugas1.model;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,7 +28,7 @@ public class JabatanModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "id")
-	private BigInteger id;
+	private long id;
 	
 	@NotNull
 	@Size(max = 255)
@@ -60,11 +59,11 @@ public class JabatanModel implements Serializable{
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	private List<PegawaiModel> listPegawai;
 	
-	public BigInteger getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

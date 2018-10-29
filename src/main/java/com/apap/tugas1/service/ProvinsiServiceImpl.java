@@ -1,5 +1,7 @@
 package com.apap.tugas1.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,5 +15,17 @@ import com.apap.tugas1.repository.ProvinsiDb;
 public class ProvinsiServiceImpl implements ProvinsiService {
 	@Autowired
 	private ProvinsiDb provinsiDb;
+
+	@Override
+	public ProvinsiDb getProvinsiDb() {
+		// TODO Auto-generated method stub
+		return provinsiDb;
+	}
+
+	@Override
+	public List<ProvinsiModel> getListProvinsi() {
+		// TODO Auto-generated method stub
+		return provinsiDb.findAll();
+	}
 
 }

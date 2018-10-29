@@ -1,6 +1,5 @@
 package com.apap.tugas1.service;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +27,7 @@ public class PegawaiServiceImpl implements PegawaiService {
 	}
 
 	@Override
-	public PegawaiModel getPegawaiTertuaDiInstansi(BigInteger idInstansi) {
+	public PegawaiModel getPegawaiTertuaDiInstansi(long idInstansi) {
 		// TODO Auto-generated method stub
 		List<PegawaiModel> pegawaiByInstansi = instansiDb.getOne(idInstansi).getPegawaiInstansi();
 		PegawaiModel tua = pegawaiByInstansi.get(0);
@@ -41,7 +40,7 @@ public class PegawaiServiceImpl implements PegawaiService {
 	}
 
 	@Override
-	public PegawaiModel getPegawaiTermudaDiInstansi(BigInteger idInstansi) {
+	public PegawaiModel getPegawaiTermudaDiInstansi(long idInstansi) {
 		// TODO Auto-generated method stub
 		List<PegawaiModel> pegawaiByInstansi = instansiDb.getOne(idInstansi).getPegawaiInstansi();
 		PegawaiModel muda = pegawaiByInstansi.get(0);		
@@ -55,8 +54,22 @@ public class PegawaiServiceImpl implements PegawaiService {
 
 	
 
+	
+
 	@Override
-	public void updatePegawai(BigInteger id, PegawaiModel pegawai) {
+	public PegawaiDb getPegawaiDb() {
+		// TODO Auto-generated method stub
+		return pegawaiDb;
+	}
+
+	@Override
+	public PegawaiModel getPegawaiDetailById(long id) {
+		// TODO Auto-generated method stub
+		return pegawaiDb.findById(id);
+	}
+
+	@Override
+	public void updatePegawai(PegawaiModel pegawai, long id) {
 		// TODO Auto-generated method stub
 		PegawaiModel updatePegawai = pegawaiDb.getOne(id);
 		updatePegawai.setNama(pegawai.getNama());
@@ -65,8 +78,39 @@ public class PegawaiServiceImpl implements PegawaiService {
 		updatePegawai.setTempat_lahir(pegawai.getTempat_lahir());
 		updatePegawai.setTanggal_lahir(pegawai.getTanggal_lahir());
 		pegawaiDb.save(updatePegawai);
-		
 	}
+
+	@Override
+	public PegawaiModel addPegawai(PegawaiModel pegawai) {
+		// TODO Auto-generated method stub
+		return pegawaiDb.save(pegawai);
+	}
+
+	@Override
+	public void generateNip(PegawaiModel pegawai) {
+		// TODO Auto-generated method stub
+		String nip = "";
+		nip += pegawai.getInstansi().getId();
+		String[] tanggal_lahir = pegawai.getTanggal_lahir().toString().split("-");
+		String strTanggal = tanggal_lahir[2] + tanggal_lahir[1] + tanggal_lahir[0].substring(2, 4);
+				
+		nip += strTanggal;
+		//System.out.println(nip+=strTanggal);
+		nip += pegawai.getTahun_masuk();
+
+		int i = 1;
+		for (PegawaiModel pegawaiInstansi:pegawai.getInstansi().getPegawaiInstansi()) {
+			if (pegawaiInstansi.getTahun_masuk().equals(pegawai.getTahun_masuk()) && pegawaiInstansi.getTanggal_lahir().equals(pegawai.getTanggal_lahir())) {
+				i += 1;
+			}	
+		}
+		nip += "0" + i;
+		//System.out.println(nip += "0" + i);
+		pegawai.setNip(nip);
+	}
+
+
+	
 
 	
 

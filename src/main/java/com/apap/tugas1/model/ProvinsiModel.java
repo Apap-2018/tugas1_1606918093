@@ -19,11 +19,11 @@ import javax.validation.constraints.Size;
 @Table(name= "provinsi")
 public class ProvinsiModel implements Serializable {
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -55,7 +55,7 @@ public class ProvinsiModel implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private long id;
 	
 	//fk dari InstansiModel
 	@OneToMany(mappedBy = "provinsi", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)

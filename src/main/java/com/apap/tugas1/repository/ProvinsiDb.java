@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.apap.tugas1.model.ProvinsiModel;
 
 
-public interface ProvinsiDb extends JpaRepository<ProvinsiModel, BigInteger>{
+public interface ProvinsiDb extends JpaRepository<ProvinsiModel, Long>{
 
 	//
 

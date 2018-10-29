@@ -2,31 +2,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>SIPEG</title>
+	<object th:include="fragments/fragment :: title" ></object>
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-	<object th:include="fragments/fragment :: js" th:remove="tag"></object>	
-	
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
-<body>
-		<tr th:each="jabatan,iterationStatus : ${datajabatan}">
-			<h3 th:text="'Detail Jabatan ' + ${jabatan.nama}"> </h3>
-			<td th:text="${jabatan.nama}"></td>
-			<br>
-			<td th:text="${jabatan.deskripsi}"></td>
-			<br>
-			<td th:text="${jabatan.listPegawai.size()}"></td>
-			<br>
-			<td th:text="${jabatan.gaji_pokok}"></td>
-			<br><br>
-		</tr>
-	<form th:action="@{/jabatan/ubah}" class="form-inline" method="GET">
-		<input type="hidden" th:value="${datajabatan.id}" name="idJabatan"></input>
-		<button class="btn btn-alert mb-2" type="submit">Ubah</button>
-	</form>
-	<form th:if="${datajabatan.listPegawai.isEmpty()} == true"  th:action="@{/jabatan/hapus}" class="form-inline" method="POST">
-		<input type="hidden" th:value="${datajabatan.id}" name="idJabatan"></input>
-		<button class="btn btn-danger mb-2" type="submit">Hapus</button>
-	</form>
-</body>
 
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	
+	<div class="container-fluid">
+		<h2 th:text="'Detail Jabatan ' + ${datajabatan.nama}"> </h2>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<form th:action="@{/jabatan/view}" method="GET">
+						<div class="card-body">
+							<table style="width:100%">
+							<tr>
+							  <tr>
+							    <th>Nama</th>
+							    <td th:text="${datajabatan.nama}"></td>
+							  </tr>
+							  <tr>
+							    <th>Deskripsi</th>
+							    <td th:text="${datajabatan.deskripsi}"></td>
+							  </tr>
+
+							  <tr>
+							    <th>Gaji Pokok</th>
+							    <td th:text="${datajabatan.gaji_pokok}"></td>
+							  </tr>
+							</table>
+							<br>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<form th:action="@{/jabatan/ubah}" class="form-inline" method="GET">
+									<input type="hidden" th:value="${datajabatan.id}" name="idJabatan"></input>
+									<button class="btn btn-alert mb-2" type="submit">Ubah</button>
+		</form>
+		<form th:if="${datajabatan.listPegawai.isEmpty()} == true" th:action="@{/jabatan/hapus}" class="form-inline" method="POST">
+									<input type="hidden" th:value="${datajabatan.id}" name="idJabatan"></input>
+									<button class="btn btn-danger mb-2" type="submit">Hapus</button>
+		</form>
+	</div>
+
+</body>
 </html>

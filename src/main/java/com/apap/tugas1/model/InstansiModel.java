@@ -1,7 +1,6 @@
 package com.apap.tugas1.model;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,7 +30,7 @@ public class InstansiModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private BigInteger id;
+	private long id;
 	
 	//fk dari PegawaiModel
 	@OneToMany(mappedBy = "instansi", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -57,11 +56,11 @@ public class InstansiModel implements Serializable {
 	@JsonIgnore
 	private ProvinsiModel provinsi;
 	
-	public BigInteger getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -10,7 +10,7 @@ import com.apap.tugas1.model.ProvinsiModel;
 import org.springframework.stereotype.Repository;
 
 
-public interface InstansiDb extends JpaRepository<InstansiModel, BigInteger>{
+public interface InstansiDb extends JpaRepository<InstansiModel, Long>{
 	//InstansiModel findByNama(String nama);
 	List<InstansiModel> findByProvinsi(ProvinsiModel provinsi);
 }

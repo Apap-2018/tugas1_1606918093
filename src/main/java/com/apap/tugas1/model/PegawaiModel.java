@@ -1,7 +1,6 @@
 package com.apap.tugas1.model;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.sql.Date;
 import java.util.Collections;
 import java.util.List;
@@ -31,14 +30,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name= "pegawai")
 public class PegawaiModel implements Serializable{
-
-	
-
 	//id bigint20 ac pk notnull
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private BigInteger id;
+	private long id;
 	
 	//nip varchar255 notnull unique
 	@NotNull
@@ -84,11 +80,11 @@ public class PegawaiModel implements Serializable{
 		   inverseJoinColumns = {@JoinColumn(name = "id_jabatan")})
 	private List<JabatanModel> jabatan;
 	
-	public BigInteger getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
