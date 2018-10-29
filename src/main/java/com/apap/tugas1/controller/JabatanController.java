@@ -32,6 +32,7 @@ public class JabatanController {
 	private String viewDataByJabatan(@RequestParam(value="idJabatan")long id, Model model) {
 		JabatanModel datajabatan = jabatanService.getJabatanById(id);
 		model.addAttribute("datajabatan", datajabatan);
+		model.addAttribute("listjabatan", ((JabatanService) jabatanService).getJabatanDb().findAll());
 		model.addAttribute("jumlahpegawai", datajabatan.getListPegawai().size());
 		model.addAttribute("title", "Lihat Data terkait Jabatan");
 		return "jabatan-view";
